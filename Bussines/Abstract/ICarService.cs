@@ -9,6 +9,7 @@ namespace Bussines.Abstract
 {
     public interface ICarService
     {
+        CarDto GetAllCarsDtoById(IBrandDal brandDal, IColorDal colorDal , int Id);
         List<CarDto> GetAllCarsDto(IBrandDal brandDal,IColorDal colorDal);
 
         List<Car> GetAllCars();

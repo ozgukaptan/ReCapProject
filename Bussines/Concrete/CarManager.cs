@@ -40,6 +40,30 @@ namespace Bussines.Concrete
             return result.ToList();
         }
 
+
+        public CarDto GetAllCarsDtoById(IBrandDal brandDal, IColorDal colorDal,int Id)
+        {
+            List<Car> cars = _carDal.GetAll();
+            List<Brand> brands = brandDal.GetAll();
+            List<Color> colors = colorDal.GetAll();
+
+            var result = from c in cars
+                         join b in brands on c.BrandId equals b.Id
+                         join co in colors on c.ColorId equals co.Id
+                         where c.Id == Id
+                         select new CarDto
+                         {
+                             Brand = b.Name,
+                             Color = co.Name,
+                             ModelYear = c.ModelYear,
+                             DealyPrice = c.DealyPrice,
+                             Description = c.Description
+                         };
+
+            return result.FirstOrDefault();
+        }
+
+
         public void Add(Car car)
         {
             _carDal.Add(car);

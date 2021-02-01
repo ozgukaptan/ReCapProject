@@ -23,18 +23,26 @@ namespace ConsoleUI
 
             Console.WriteLine("---------------- İlk Araba Listesi ------------------");
             showCarList();
-
+            Console.WriteLine();
             carManager.Add(newCar);
-            Console.WriteLine("---------------- Yani Araba Eklendi ----------------");
+            Console.WriteLine("---------------- Yeni Araba Eklendi ----------------");
             showCarList();
-
+            Console.WriteLine();
             carManager.update(updateCar);
-            Console.WriteLine("---------------- Yani Araba Güncellendi ----------------");
+            Console.WriteLine("---------------- Yeni Araba Güncellendi ----------------");
+            showCarList();
+            Console.WriteLine();
+            carManager.delete(updateCar);
+            Console.WriteLine("---------------- Yeni Araba Silindi ----------------");
             showCarList();
 
-            carManager.delete(updateCar);
-            Console.WriteLine("---------------- Yani Araba Silindi ----------------");
-            showCarList();
+
+            Console.WriteLine();
+            CarDto carDto1 = carManager.GetAllCarsDtoById(new InMemoryBrandDal(), new InMemoryColorDal(), 1);
+            Console.WriteLine("---------------- Idsi 1 olan Araba ----------------");
+            Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}", carDto1.Brand, carDto1.ModelYear.ToString(), carDto1.Color, carDto1.DealyPrice, carDto1.Description);
+
+
 
 
 
