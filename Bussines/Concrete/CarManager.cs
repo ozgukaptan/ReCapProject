@@ -23,7 +23,7 @@ namespace Bussines.Concrete
            return _carDal.GetAll();
         }
         
-        public List<CarDto> GetAllCarsDto(IBrandDal brandDal, IColorDal colorDal)
+        public List<CarDetail> GetAllCarsDto(IBrandDal brandDal, IColorDal colorDal)
         {
             List<Car> cars = _carDal.GetAll();
             List<Brand> brands = brandDal.GetAll();
@@ -32,7 +32,7 @@ namespace Bussines.Concrete
             var result = from c in cars
                          join b in brands on c.BrandId equals b.Id
                          join co in colors on c.ColorId equals co.Id
-                         select new CarDto
+                         select new CarDetail
                          {
                              Brand = b.Name, Color = co.Name , ModelYear = c.ModelYear , DealyPrice = c.DealyPrice , Description = c.Description
                          };
@@ -41,7 +41,7 @@ namespace Bussines.Concrete
         }
 
 
-        public CarDto GetAllCarsDtoById(IBrandDal brandDal, IColorDal colorDal,int Id)
+        public CarDetail GetAllCarsDtoById(IBrandDal brandDal, IColorDal colorDal,int Id)
         {
             List<Car> cars = _carDal.GetAll();
             List<Brand> brands = brandDal.GetAll();
@@ -51,7 +51,7 @@ namespace Bussines.Concrete
                          join b in brands on c.BrandId equals b.Id
                          join co in colors on c.ColorId equals co.Id
                          where c.Id == Id
-                         select new CarDto
+                         select new CarDetail
                          {
                              Brand = b.Name,
                              Color = co.Name,

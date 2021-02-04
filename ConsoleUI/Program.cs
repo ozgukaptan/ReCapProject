@@ -38,7 +38,7 @@ namespace ConsoleUI
 
 
             Console.WriteLine();
-            CarDto carDto1 = carManager.GetAllCarsDtoById(new InMemoryBrandDal(), new InMemoryColorDal(), 1);
+            CarDetail carDto1 = carManager.GetAllCarsDtoById(new InMemoryBrandDal(), new InMemoryColorDal(), 1);
             Console.WriteLine("---------------- Idsi 1 olan Araba ----------------");
             Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}", carDto1.Brand, carDto1.ModelYear.ToString(), carDto1.Color, carDto1.DealyPrice, carDto1.Description);
 
@@ -49,8 +49,8 @@ namespace ConsoleUI
 
             void ShowCarList()
             {
-                List<CarDto> carDtos = carManager.GetAllCarsDto(new InMemoryBrandDal(), new InMemoryColorDal());
-                foreach (CarDto carDto in carDtos)
+                List<CarDetail> carDtos = carManager.GetAllCarsDto(new InMemoryBrandDal(), new InMemoryColorDal());
+                foreach (CarDetail carDto in carDtos)
                 {
                     Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}"  , carDto.Brand, carDto.ModelYear.ToString(), carDto.Color, carDto.DealyPrice, carDto.Description);
                 }
