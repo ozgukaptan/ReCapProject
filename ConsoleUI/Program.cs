@@ -14,8 +14,8 @@ namespace ConsoleUI
             
         static void Main(string[] args)
         {
-            Car newCar = new Car { Id = 7, BrandId = 1, ColorId = 1, DealyPrice = 600, Description = "Yeni Araba açıklama", ModelYear = 1990 };
-            Car updateCar = new Car { Id = 7, BrandId = 1, ColorId = 2, DealyPrice = 900, Description = "Güncellenen araba fiyat ve rengi değişti  Araba açıklama", ModelYear = 1990 };
+            Car newCar = new Car { Id = 7, BrandId = 1, ColorId = 1, DealyPrice = 600, Description = "Yeni Araba açıklama", ModelYear = "1990" };
+            Car updateCar = new Car { Id = 7, BrandId = 1, ColorId = 2, DealyPrice = 900, Description = "Güncellenen araba fiyat ve rengi değişti  Araba açıklama", ModelYear = "1990" };
 
 
             CarManager carManager = new CarManager(new InMemoryCarDal());

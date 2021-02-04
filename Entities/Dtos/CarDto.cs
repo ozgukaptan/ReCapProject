@@ -9,7 +9,7 @@ namespace Entities.Dtos
     {
         public string Brand { get; set; }
         public string Color { get; set; }
-        public int ModelYear { get; set; }
+        public string ModelYear { get; set; }
         public decimal DealyPrice { get; set; }
         public string Description { get; set; }
     }

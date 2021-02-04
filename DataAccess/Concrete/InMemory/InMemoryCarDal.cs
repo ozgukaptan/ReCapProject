@@ -14,12 +14,12 @@ namespace DataAccess.Concrete.InMemory
         public InMemoryCarDal()
         {
             _cars = new List<Car> {
-            new Car{Id = 1, BrandId = 1 , ColorId = 1 , DealyPrice = 600 , Description = "Araba açıklama" , ModelYear = 1990},
-            new Car{Id = 2, BrandId = 1 , ColorId = 2 , DealyPrice = 700 , Description = "Araba açıklama" , ModelYear = 1991},
-            new Car{Id = 3, BrandId = 2 , ColorId = 1 , DealyPrice = 750 , Description = "Araba açıklama" , ModelYear = 1992},
-            new Car{Id = 4, BrandId = 2 , ColorId = 3 , DealyPrice = 800 , Description = "Araba açıklama" , ModelYear = 1993},
-            new Car{Id = 5, BrandId = 3 , ColorId = 2 , DealyPrice = 900 , Description = "Araba açıklama" , ModelYear = 1994},
-            new Car{Id = 6, BrandId = 3 , ColorId = 4 , DealyPrice = 1100 , Description = "Araba açıklama" , ModelYear = 1995}
+            new Car{Id = 1, BrandId = 1 , ColorId = 1 , DealyPrice = 600 , Description = "Araba açıklama" , ModelYear = "1990"},
+            new Car{Id = 2, BrandId = 1 , ColorId = 2 , DealyPrice = 700 , Description = "Araba açıklama" , ModelYear = "1991"},
+            new Car{Id = 3, BrandId = 2 , ColorId = 1 , DealyPrice = 750 , Description = "Araba açıklama" , ModelYear = "1992"},
+            new Car{Id = 4, BrandId = 2 , ColorId = 3 , DealyPrice = 800 , Description = "Araba açıklama" , ModelYear = "1993"},
+            new Car{Id = 5, BrandId = 3 , ColorId = 2 , DealyPrice = 900 , Description = "Araba açıklama" , ModelYear = "1994"},
+            new Car{Id = 6, BrandId = 3 , ColorId = 4 , DealyPrice = 1100 , Description = "Araba açıklama" , ModelYear = "1995"}
             };
 
         }
