@@ -24,6 +24,7 @@ namespace ConsoleUI
 
             Console.WriteLine("---------------- İlk Araba Listesi ------------------");
             ShowCarList();
+
             Console.WriteLine();
             newCar = carManager.Add(newCar);
             Console.WriteLine("---------------- Yeni Araba Eklendi ----------------");
