@@ -29,11 +29,11 @@ namespace ConsoleUI
             Console.WriteLine("---------------- Yeni Araba Eklendi ----------------");
             ShowCarList();
             Console.WriteLine();
-            carManager.update(newCar);
+            carManager.Update(newCar);
             Console.WriteLine("---------------- Yeni Araba Güncellendi ----------------");
             ShowCarList();
             Console.WriteLine();
-            carManager.delete(newCar);
+            carManager.Delete(newCar);
             Console.WriteLine("---------------- Yeni Araba Silindi ----------------");
             ShowCarList();
 
@@ -50,7 +50,7 @@ namespace ConsoleUI
 
             void ShowCarList()
             {
-                List<CarDetail> carDtos = carManager.GetAllCarsDto(new InMemoryBrandDal(), new InMemoryColorDal());
+                List<CarDetail> carDtos = carManager.GetAllCarDetail();
                 foreach (CarDetail carDto in carDtos)
                 {
                     Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}"  , carDto.Brand, carDto.ModelYear.ToString(), carDto.Color, carDto.DealyPrice, carDto.Description);

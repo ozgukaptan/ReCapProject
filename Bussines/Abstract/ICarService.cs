@@ -9,9 +9,11 @@ namespace Bussines.Abstract
 {
     public interface ICarService
     {
-        CarDetail GetAllCarsDtoById(IBrandDal brandDal, IColorDal colorDal , int Id);
-        List<CarDetail> GetAllCarsDto(IBrandDal brandDal,IColorDal colorDal);
-
-        List<Car> GetAllCars();
+        List<Car> GetAll();
+        List<Car> GetAllCarDetail();
+        Car GetById(int Id);
+        Car Add(Car car);
+        Car Update(Car car);
+        void Delete(Car car);
     }
 }

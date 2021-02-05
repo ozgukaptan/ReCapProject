@@ -3,44 +3,36 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryBrandDal : IBrandDal
     {
-        List<Brand> _brands;
-        public InMemoryBrandDal()
+        public Brand Add(Brand entity)
         {
-            _brands = new List<Brand> {
-
-                new Brand {Id = 1 , Name = "Mercedes" , Description = "Mercedes Açıklama"},
-                new Brand {Id = 2 , Name = "Audi" , Description = "Audi Açıklama"},
-                new Brand {Id = 3 , Name = "BMW" , Description = "BMW Açıklama"}
-
-            };
-        }
-        public void Add(Brand brand)
-        {
-            _brands.Add(brand);
+            throw new NotImplementedException();
         }
 
-        public void Delete(Brand brand)
+        public void Delete(Brand entity)
         {
-            Brand brandDelete = _brands.Where(b => b.Id == brand.Id).FirstOrDefault();
-            _brands.Remove(brandDelete);
+            throw new NotImplementedException();
         }
 
-        public List<Brand> GetAll()
+        public Brand Get(Expression<Func<Brand, bool>> filter)
         {
-            return _brands.ToList();
+            throw new NotImplementedException();
         }
 
-        public void Update(Brand brand)
+        public List<Brand> GetList(Expression<Func<Brand, bool>> filter = null)
         {
-            Brand brandUpdate = _brands.Where(b => b.Id == brand.Id).FirstOrDefault();
-            brandUpdate.Description = brand.Description;
-            brandUpdate.Name = brand.Name;
+            throw new NotImplementedException();
+        }
+
+        public Brand Update(Brand entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

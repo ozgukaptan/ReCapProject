@@ -1,6 +1,7 @@
 ﻿using Core.DataAccsess;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,11 @@ namespace DataAccess.Concrete.InMemory
         public List<Car> GetAllByBrandId(int brandId)
         {
             return _cars.Where(c => c.BrandId == brandId).ToList();
+        }
+
+        public List<CarDetail> GetCarDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Car> GetList(Expression<Func<Car, bool>> filter = null)

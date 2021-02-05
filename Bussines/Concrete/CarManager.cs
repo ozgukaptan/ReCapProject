@@ -18,65 +18,39 @@ namespace Bussines.Concrete
             _carDal = carDal;
         }
 
-        public List<Car> GetAllCars()
-        {
-           return _carDal.GetList();
-        }
-        
-        public List<CarDetail> GetAllCarsDto(IBrandDal brandDal, IColorDal colorDal)
-        {
-            List<Car> cars = _carDal.GetList();
-            List<Brand> brands = brandDal.GetAll();
-            List<Color> colors = colorDal.GetAll();
-
-            var result = from c in cars
-                         join b in brands on c.BrandId equals b.Id
-                         join co in colors on c.ColorId equals co.Id
-                         select new CarDetail
-                         {
-                             Brand = b.Name, Color = co.Name , ModelYear = c.ModelYear , DealyPrice = c.DealyPrice , Description = c.Description
-                         };
-
-            return result.ToList();
-        }
-
-
-        public CarDetail GetAllCarsDtoById(IBrandDal brandDal, IColorDal colorDal,int Id)
-        {
-            List<Car> cars = _carDal.GetList();
-            List<Brand> brands = brandDal.GetAll();
-            List<Color> colors = colorDal.GetAll();
-
-            var result = from c in cars
-                         join b in brands on c.BrandId equals b.Id
-                         join co in colors on c.ColorId equals co.Id
-                         where c.Id == Id
-                         select new CarDetail
-                         {
-                             Brand = b.Name,
-                             Color = co.Name,
-                             ModelYear = c.ModelYear,
-                             DealyPrice = c.DealyPrice,
-                             Description = c.Description
-                         };
-
-            return result.FirstOrDefault();
-        }
-
-
         public Car Add(Car car)
         {
             return _carDal.Add(car);
         }
 
-        public void update(Car car)
-        {
-            _carDal.Update(car);
-        }
-
-        public void delete(Car car)
+        public void Delete(Car car)
         {
             _carDal.Delete(car);
+        }
+
+        public List<Car> GetAll()
+        {
+            return _carDal.GetList();
+        }
+
+        public List<CarDetail> GetAllCarDetail()
+        {
+            return _carDal.GetCarDetails();
+        }
+
+        public Car GetById(int Id)
+        {
+            return _carDal.Get(c => c.Id == Id);
+        }
+
+        public Car Update(Car car)
+        {
+            return _carDal.Update(car);
+        }
+
+        List<Car> ICarService.GetAllCarDetail()
+        {
+            throw new NotImplementedException();
         }
     }
 }

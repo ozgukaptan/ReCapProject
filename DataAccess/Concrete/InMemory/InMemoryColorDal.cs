@@ -3,46 +3,36 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryColorDal : IColorDal
     {
-        List<Color> _colors;
-        public InMemoryColorDal()
+        public Color Add(Color entity)
         {
-            _colors = new List<Color> {
-
-                new Color{ Id = 1 , Name = "lacivert" , Description = "Lacivert"},
-                new Color{ Id = 2 , Name = "Sarı" , Description = "Sarı"},
-                new Color{ Id = 3 , Name = "Beyaz" , Description = "Beyaz"},
-                new Color{ Id = 4 , Name = "Yaşil" , Description = "Yaşil"}
-
-            };
+            throw new NotImplementedException();
         }
 
-        public void Add(Color color)
+        public void Delete(Color entity)
         {
-            _colors.Add(color);
+            throw new NotImplementedException();
         }
 
-        public void Delete(Color color)
+        public Color Get(Expression<Func<Color, bool>> filter)
         {
-            Color colorDelete = _colors.Where(c => c.Id == color.Id).FirstOrDefault();
-            _colors.Remove(colorDelete);
+            throw new NotImplementedException();
         }
 
-        public List<Color> GetAll()
+        public List<Color> GetList(Expression<Func<Color, bool>> filter = null)
         {
-            return _colors.ToList();
+            throw new NotImplementedException();
         }
 
-        public void Update(Color color)
+        public Color Update(Color entity)
         {
-            Color colorUpdate = _colors.Where(c => c.Id == color.Id).FirstOrDefault();
-            colorUpdate.Description = color.Description;
-            colorUpdate.Name = color.Name;
+            throw new NotImplementedException();
         }
     }
 }
