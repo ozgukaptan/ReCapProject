@@ -2,15 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.DataAccsess;
 
 namespace DataAccess.Abstract
 {
-    public interface ICarDal
+    public interface ICarDal : IEntitiyRepository<Car>
     {
-        List<Car> GetAll();
-        List<Car> GetAllByBrandId(int brandId);
-        void Add(Car car);
-        void Update(Car car);
-        void Delete(Car car);
+        
     }
 }

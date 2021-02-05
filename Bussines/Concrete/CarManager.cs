@@ -20,12 +20,12 @@ namespace Bussines.Concrete
 
         public List<Car> GetAllCars()
         {
-           return _carDal.GetAll();
+           return _carDal.GetList();
         }
         
         public List<CarDetail> GetAllCarsDto(IBrandDal brandDal, IColorDal colorDal)
         {
-            List<Car> cars = _carDal.GetAll();
+            List<Car> cars = _carDal.GetList();
             List<Brand> brands = brandDal.GetAll();
             List<Color> colors = colorDal.GetAll();
 
@@ -43,7 +43,7 @@ namespace Bussines.Concrete
 
         public CarDetail GetAllCarsDtoById(IBrandDal brandDal, IColorDal colorDal,int Id)
         {
-            List<Car> cars = _carDal.GetAll();
+            List<Car> cars = _carDal.GetList();
             List<Brand> brands = brandDal.GetAll();
             List<Color> colors = colorDal.GetAll();
 
@@ -64,9 +64,9 @@ namespace Bussines.Concrete
         }
 
 
-        public void Add(Car car)
+        public Car Add(Car car)
         {
-            _carDal.Add(car);
+            return _carDal.Add(car);
         }
 
         public void update(Car car)

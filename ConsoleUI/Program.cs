@@ -5,6 +5,7 @@ using Entities.Concrete;
 using Entities.Dtos;
 using System;
 using System.Collections.Generic;
+using DataAccess.Concrete.EntityFramework;
 
 namespace ConsoleUI
 {
@@ -14,33 +15,33 @@ namespace ConsoleUI
             
         static void Main(string[] args)
         {
-            Car newCar = new Car { Id = 7, BrandId = 1, ColorId = 1, DealyPrice = 600, Description = "Yeni Araba açıklama", ModelYear = "1990" };
-            Car updateCar = new Car { Id = 7, BrandId = 1, ColorId = 2, DealyPrice = 900, Description = "Güncellenen araba fiyat ve rengi değişti  Araba açıklama", ModelYear = "1990" };
+            Car newCar = new Car {  BrandId = 1, ColorId = 1, DealyPrice = 600, Description = "Yeni Araba açıklama", ModelYear = "1990" };
+            Car updateCar = new Car { Id = 1, BrandId = 1, ColorId = 2, DealyPrice = 900, Description = "Güncellenen araba fiyat ve rengi değişti  Araba açıklama", ModelYear = "1990" };
 
 
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
 
 
             Console.WriteLine("---------------- İlk Araba Listesi ------------------");
             ShowCarList();
             Console.WriteLine();
-            carManager.Add(newCar);
+            newCar = carManager.Add(newCar);
             Console.WriteLine("---------------- Yeni Araba Eklendi ----------------");
             ShowCarList();
             Console.WriteLine();
-            carManager.update(updateCar);
+            carManager.update(newCar);
             Console.WriteLine("---------------- Yeni Araba Güncellendi ----------------");
             ShowCarList();
             Console.WriteLine();
-            carManager.delete(updateCar);
+            carManager.delete(newCar);
             Console.WriteLine("---------------- Yeni Araba Silindi ----------------");
             ShowCarList();
 
 
-            Console.WriteLine();
-            CarDetail carDto1 = carManager.GetAllCarsDtoById(new InMemoryBrandDal(), new InMemoryColorDal(), 1);
-            Console.WriteLine("---------------- Idsi 1 olan Araba ----------------");
-            Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}", carDto1.Brand, carDto1.ModelYear.ToString(), carDto1.Color, carDto1.DealyPrice, carDto1.Description);
+            //Console.WriteLine();
+            //CarDetail carDto1 = carManager.GetAllCarsDtoById(new InMemoryBrandDal(), new InMemoryColorDal(), 1);
+            //Console.WriteLine("---------------- Idsi 1 olan Araba ----------------");
+            //Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}", carDto1.Brand, carDto1.ModelYear.ToString(), carDto1.Color, carDto1.DealyPrice, carDto1.Description);
 
 
 
