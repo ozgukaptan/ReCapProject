@@ -21,6 +21,7 @@ namespace ConsoleUI
 
             CarManager carManager = new CarManager(new EfCarDal());
 
+            
 
             Console.WriteLine("---------------- İlk Araba Listesi ------------------");
             ShowCarList();
@@ -30,6 +31,7 @@ namespace ConsoleUI
             Console.WriteLine("---------------- Yeni Araba Eklendi ----------------");
             ShowCarList();
             Console.WriteLine();
+            newCar.Description = "Yeni araba açıklama Güncellendi";
             carManager.Update(newCar);
             Console.WriteLine("---------------- Yeni Araba Güncellendi ----------------");
             ShowCarList();
