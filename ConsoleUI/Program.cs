@@ -15,13 +15,26 @@ namespace ConsoleUI
             
         static void Main(string[] args)
         {
-            Car newCar = new Car {  BrandId = 1, ColorId = 1, DealyPrice = 600, Description = "Yeni Araba açıklama", ModelYear = "1990" };
+
+
+            Color color = new Color {Description = "sarı", Name = "a"};
+            Car newCar = new Car {  BrandId = 1, ColorId = 1, DealyPrice = 100, Description = "Yeni Araba açıklama", ModelYear = "1990" };
             Car updateCar = new Car { Id = 1, BrandId = 1, ColorId = 2, DealyPrice = 900, Description = "Güncellenen araba fiyat ve rengi değişti  Araba açıklama", ModelYear = "1990" };
 
 
             CarManager carManager = new CarManager(new EfCarDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            
+            List<Car> cars = new List<Car>();
+            cars = carManager.GetCarsByBrandId(1);
+
+            foreach (var car in cars)
+            {
+                Console.WriteLine(car.BrandId);
+            }
+
+
 
             Console.WriteLine("---------------- İlk Araba Listesi ------------------");
             ShowCarList();
@@ -59,6 +72,16 @@ namespace ConsoleUI
                     Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}"  , carDto.Brand, carDto.ModelYear.ToString(), carDto.Color, carDto.DealyPrice, carDto.Description);
                 }
             }
+
+            void ShowColorList()
+            {
+                List<Color> colors = colorManager.GetAll();
+                foreach (Color color in colors)
+                {
+                    Console.WriteLine("Renk Adı  :  {0}  Renk açıklaması : {1}  ", color.Name, color.Description.ToString() );
+                }
+            }
+
 
         }
 

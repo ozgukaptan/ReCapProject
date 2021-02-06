@@ -22,7 +22,7 @@ namespace DataAccess.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-6N7UTE9\SQLEXPRESS;Database=ReCapProject;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-AC15D00\SQLEXPRESS02;Database=ReCapProject;Trusted_Connection=true");
         }
 
         public DbSet<Car> Cars { get; set; }

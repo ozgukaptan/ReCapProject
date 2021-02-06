@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DataAccess.Concrete.EntityFramework;
 
 namespace Bussines.Concrete
 {
@@ -20,9 +21,18 @@ namespace Bussines.Concrete
 
         public Car Add(Car car)
         {
-            return _carDal.Add(car);
+            if (car.DealyPrice > 0)
+            {
+                return _carDal.Add(car);
+            }
+            else
+            {
+                Console.WriteLine("Arabanın günlük fiyatı 0 dan büyük olmalıdır.");
+                return null;
+            }
+                
         }
-
+        
         public void Delete(Car car)
         {
             _carDal.Delete(car);
@@ -38,9 +48,19 @@ namespace Bussines.Concrete
             return _carDal.GetCarDetails();
         }
 
-        public Car GetById(int Id)
+        public Car GetById(int id)
         {
-            return _carDal.Get(c => c.Id == Id);
+            return _carDal.Get(c => c.Id == id);
+        }
+
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            return _carDal.GetList(c=>c.BrandId==id).ToList();
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetList(c => c.ColorId == id).ToList();
         }
 
         public Car Update(Car car)
@@ -48,9 +68,6 @@ namespace Bussines.Concrete
             return _carDal.Update(car);
         }
 
-        List<Car> ICarService.GetAllCarDetail()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
