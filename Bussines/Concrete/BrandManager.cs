@@ -25,29 +25,29 @@ namespace Bussines.Concrete
             }
             else
             {
-                Console.WriteLine("Araba renginin ism alanına iki karekterden büyük bir şey yazın.");
+                Console.WriteLine("Araba renginin isim alanına iki karekterden büyük bir şey yazın.");
                 return null;
             }
         }
 
         public void Delete(Brand brand)
         {
-            throw new NotImplementedException();
+            _brandDal.Delete(brand);
         }
 
         public List<Brand> GetAll()
         {
-            throw new NotImplementedException();
+            return _brandDal.GetList();
         }
 
-        public Brand GetById(int Id)
+        public Brand GetById(int id)
         {
-            throw new NotImplementedException();
+            return _brandDal.Get(b => b.Id == id);
         }
 
         public Brand Update(Brand brand)
         {
-            throw new NotImplementedException();
+            return _brandDal.Update(brand);
         }
     }
 }

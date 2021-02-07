@@ -19,12 +19,12 @@ namespace Bussines.Concrete
 
         public Color Add(Color color)
         {
-            throw new NotImplementedException();
+            return _colorDal.Add(color);
         }
 
         public void Delete(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Delete(color);
         }
 
         public List<Color> GetAll()
@@ -34,12 +34,12 @@ namespace Bussines.Concrete
 
         public Color GetById(int id)
         {
-            throw new NotImplementedException();
+            return _colorDal.Get(c => c.Id == id);
         }
 
         public Color Update(Color color)
         {
-            throw new NotImplementedException();
+            return _colorDal.Update(color);
         }
     }
 }
