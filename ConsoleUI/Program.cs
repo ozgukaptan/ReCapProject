@@ -82,10 +82,7 @@ namespace ConsoleUI
                 }
             }
 
-
         }
-
-
 
     }
 }
