@@ -26,10 +26,9 @@ namespace ConsoleUI
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            List<Car> cars = new List<Car>();
-            cars = carManager.GetCarsByBrandId(1);
+            var cars = carManager.GetCarsByBrandId(1);
 
-            foreach (var car in cars)
+            foreach (var car in cars.Data)
             {
                 Console.WriteLine(car.BrandId);
             }
@@ -40,7 +39,7 @@ namespace ConsoleUI
             ShowCarList();
 
             Console.WriteLine();
-            newCar = carManager.Add(newCar);
+            var result = carManager.Add(newCar);
             Console.WriteLine("---------------- Yeni Araba Eklendi ----------------");
             ShowCarList();
             Console.WriteLine();
@@ -66,8 +65,8 @@ namespace ConsoleUI
 
             void ShowCarList()
             {
-                List<CarDetail> carDtos = carManager.GetAllCarDetail();
-                foreach (CarDetail carDto in carDtos)
+                var carDtos = carManager.GetAllCarDetail();
+                foreach (CarDetail carDto in carDtos.Data)
                 {
                     Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}"  , carDto.Brand, carDto.ModelYear.ToString(), carDto.Color, carDto.DealyPrice, carDto.Description);
                 }

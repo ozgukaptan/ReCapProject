@@ -3,6 +3,8 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Bussines.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 
 namespace Bussines.Concrete
@@ -17,37 +19,41 @@ namespace Bussines.Concrete
         }
 
         
-        public Brand Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             if (brand.Name.Length >= 2)
             {
-                return _brandDal.Add(brand);
+                
+                return new ErrorResult(Messages.BrandNameInvalid);
             }
             else
             {
-                Console.WriteLine("Araba renginin isim alanına iki karekterden büyük bir şey yazın.");
-                return null;
+                _brandDal.Add(brand);
+                return new SuccessResult(Messages.BrandAdded);
             }
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            return new SuccessResult(Messages.BrandDeleted);
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetList();
+            _brandDal.GetList();
+            return new SuccessDataResult<List<Brand>>();
         }
 
-        public Brand GetById(int id)
-        {
-            return _brandDal.Get(b => b.Id == id);
+        public IDataResult<Brand> GetById(int id)
+        { 
+            
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.Id == id));
         }
 
-        public Brand Update(Brand brand)
+        public IDataResult<Brand> Update(Brand brand)
         {
-            return _brandDal.Update(brand);
+            return new SuccessDataResult<Brand>(_brandDal.Update(brand));
         }
     }
 }
