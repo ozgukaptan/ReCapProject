@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Core.DataAccsess
 {
-    public interface IEntitiyRepository<T> where T : class, IEntity, new()
+    public interface IEntityRepository<T> where T : class, IEntity, new()
     {
         List<T> GetList(Expression<Func<T, bool>> filter = null);
         T Get(Expression<Func<T, bool>> filter);
