@@ -73,12 +73,12 @@ namespace DataAccess.Concrete.InMemory
             carUpdate.ModelYear = car.ModelYear;
         }
 
-        Car IEntitiyRepository<Car>.Add(Car entity)
+        Car IEntityRepository<Car>.Add(Car entity)
         {
             throw new NotImplementedException();
         }
 
-        Car IEntitiyRepository<Car>.Update(Car entity)
+        Car IEntityRepository<Car>.Update(Car entity)
         {
             throw new NotImplementedException();
         }

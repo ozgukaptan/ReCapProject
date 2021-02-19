@@ -11,5 +11,6 @@ namespace Bussines.Constants
         public static string BrandDeleted = "Marka Silindi";
 
         public static string CarAdded = "Araba eklendi";
+        public static string RentalCarInvalid = "Bu araba kiralanamaz çünkü teslim edilmedi";
     }
 }

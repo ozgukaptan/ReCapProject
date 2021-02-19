@@ -6,12 +6,13 @@ using System.Text;
 
 namespace Bussines.Abstract
 {
-    interface IRentalService
+    public interface IRentalService
     {
         IDataResult<Rental> Add(Rental rental);
         IDataResult<List<Rental>> GetAll();
-        IDataResult<Rental> GetRentalById();
+        IDataResult<Rental> GetRentalById(int id);
         IDataResult<Rental> Update(Rental rental);
         IResult Delete(Rental rental);
+        IResult CheckReturnDate(int carId);
     }
 }
