@@ -10,7 +10,7 @@ namespace Bussines.Abstract
     {
         IDataResult<User> Add(User user);
         IDataResult<List<User>> GetAll();
-        IDataResult<User> GetUserById();
+        IDataResult<User> GetUserById(int id);
         IDataResult<User> Update(User user);
         IResult Delete(User user);
     }
