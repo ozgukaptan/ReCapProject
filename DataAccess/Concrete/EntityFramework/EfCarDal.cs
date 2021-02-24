@@ -7,12 +7,13 @@ using DataAccess.Context;
 using Entities.Concrete;
 using Entities.Dtos;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, ReCapContext>, ICarDal
     {
-        public List<CarDetail> GetCarDetails()
+        public List<CarDetail> GetCarDetails(Expression<Func<Car,bool>> filter = null )
         {
             using (ReCapContext context = new ReCapContext())
             {
