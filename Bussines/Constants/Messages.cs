@@ -12,5 +12,7 @@ namespace Bussines.Constants
 
         public static string CarAdded = "Araba eklendi";
         public static string RentalCarInvalid = "Bu araba kiralanamaz çünkü teslim edilmedi";
+
+        public static string UserFirstNameInvalid = "Kullanıcı adı kısa";
     }
 }

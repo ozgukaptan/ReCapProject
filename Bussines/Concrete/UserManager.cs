@@ -4,7 +4,10 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using Bussines.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
+using FluentValidation;
 
 namespace Bussines.Concrete
 {
@@ -18,7 +21,7 @@ namespace Bussines.Concrete
             _UserDal = userDal;
         }
 
-
+        [ValidationAspect(typeof(UserValidator))]
         public IDataResult<User> Add(User user)
         {
             return new SuccessDataResult<User>(_UserDal.Add(user));
