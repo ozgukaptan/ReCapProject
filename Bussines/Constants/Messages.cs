@@ -14,5 +14,7 @@ namespace Bussines.Constants
         public static string RentalCarInvalid = "Bu araba kiralanamaz çünkü teslim edilmedi";
 
         public static string UserFirstNameInvalid = "Kullanıcı adı kısa";
+
+        public static string CarImageLimitExceeded = "bir arabanın birden fazla fotoğrafı olamaz";
     }
 }

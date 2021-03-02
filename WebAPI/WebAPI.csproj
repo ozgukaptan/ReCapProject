@@ -7,6 +7,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Bussines\Bussines.csproj" />
   </ItemGroup>
-
-
 </Project>
