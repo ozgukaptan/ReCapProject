@@ -4,19 +4,23 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DataAccess.Abstract;
 
 namespace Bussines.Concrete
 {
     public class CarImageManager : ICarImageService
     {
+        private  ICarImageDal _carImageDal;
 
-        public CarImageManager()
+        public CarImageManager(ICarImageDal carImageDal)
         {
-                
+            _carImageDal = carImageDal;
         }
+        
         public IDataResult<CarImage> Add(CarImage carImage)
         {
-            throw new NotImplementedException();
+            carImage.Date = System.DateTime.Now;
+            return null;
         }
 
         public IResult Delete()
