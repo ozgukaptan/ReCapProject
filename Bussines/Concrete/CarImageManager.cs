@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DataAccess.Abstract;
+using Core.Aspects.Autofac.Validation;
+using Bussines.ValidationRules.FluentValidation;
 
 namespace Bussines.Concrete
 {
@@ -17,6 +19,7 @@ namespace Bussines.Concrete
             _carImageDal = carImageDal;
         }
         
+        [ValidationAspect(typeof(CarImageValidator))]
         public IDataResult<CarImage> Add(CarImage carImage)
         {
             carImage.Date = System.DateTime.Now;
