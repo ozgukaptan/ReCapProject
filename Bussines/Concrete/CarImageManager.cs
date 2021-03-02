@@ -27,23 +27,20 @@ namespace Bussines.Concrete
         public IDataResult<CarImage> Add(IFormFile file, CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckImageLimitExceeded(carImage.CarId));
-
-            if(result != null)
+            if (result != null)
             {
                 return new ErrorDataResult<CarImage>(result.Message);
             }
-
             carImage.ImagePath = FileHelpers.Add(file);
             carImage.Date = DateTime.Now;
-            
             return new SuccessDataResult<CarImage>(_carImageDal.Add(carImage));
         }
-
-        
-
-        public IResult Delete()
+        [ValidationAspect(typeof(CarImageValidator))]
+        public IResult Delete(CarImage carImage)
         {
-            throw new NotImplementedException();
+            FileHelpers.Delete(carImage.ImagePath);
+            _carImageDal.Delete(carImage);
+            return new SuccessResult();
         }
 
         public IDataResult<List<CarImage>> GetAll()
@@ -55,10 +52,17 @@ namespace Bussines.Concrete
         {
             throw new NotImplementedException();
         }
-
-        public IDataResult<CarImage> Update()
+        [ValidationAspect(typeof(CarImageValidator))]
+        public IDataResult<CarImage> Update(IFormFile file, CarImage carImage)
         {
-            throw new NotImplementedException();
+            IResult result = BusinessRules.Run(CheckImageLimitExceeded(carImage.CarId));
+            if (result != null)
+            {
+                return new ErrorDataResult<CarImage>(result.Message);
+            }
+            carImage.ImagePath = FileHelpers.Update(_carImageDal.Get(p=>p.Id==carImage.Id).ImagePath, file);
+            carImage.Date = DateTime.Now;
+            return new SuccessDataResult<CarImage>(_carImageDal.Update(carImage));
         }
 
         // Business Rules

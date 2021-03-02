@@ -7,4 +7,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Bussines\Bussines.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
 </Project>

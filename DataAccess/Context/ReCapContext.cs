@@ -22,8 +22,8 @@ namespace DataAccess.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-AC15D00\SQLEXPRESS02;Database=ReCapProject;Trusted_Connection=true");
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-6N7UTE9\SQLEXPRESS;Database=ReCapProject;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-AC15D00\SQLEXPRESS02;Database=ReCapProject;Trusted_Connection=true");
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-6N7UTE9\SQLEXPRESS;Database=ReCapProject;Trusted_Connection=true");
         }
 
         public DbSet<Car> Cars { get; set; }
@@ -32,5 +32,6 @@ namespace DataAccess.Context
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<CarImage> CarImages { get; set; }
     }
 }
