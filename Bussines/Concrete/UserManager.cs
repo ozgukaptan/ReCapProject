@@ -9,6 +9,8 @@ using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using FluentValidation;
 using Core.Entities.Concrete;
+using Core.Aspects.Autofac.Caching;
+using Bussines.BusinessAspects.Autofac;
 
 namespace Bussines.Concrete
 {
@@ -22,6 +24,7 @@ namespace Bussines.Concrete
             _UserDal = userDal;
         }
 
+        [SecuredOperation("Admin")]
         [ValidationAspect(typeof(UserValidator))]
         public IDataResult<User> Add(User user)
         {
@@ -34,6 +37,7 @@ namespace Bussines.Concrete
             return new SuccessResult();
         }
 
+        [CacheAspect]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_UserDal.GetList());
