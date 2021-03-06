@@ -24,7 +24,7 @@ namespace Bussines.Concrete
             _UserDal = userDal;
         }
 
-        [SecuredOperation("Admin")]
+        
         [ValidationAspect(typeof(UserValidator))]
         public IDataResult<User> Add(User user)
         {

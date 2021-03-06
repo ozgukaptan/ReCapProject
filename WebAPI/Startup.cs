@@ -14,6 +14,13 @@ using Bussines.Abstract;
 using Bussines.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Core.Utilities.Security.JWT;
+using Core.DependencyResolvers;
+using Core.Utilities.IoC;
+using Core.Extensions;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Core.Utilities.Security.Encryption;
 
 namespace WebAPI
 {
@@ -34,7 +41,27 @@ namespace WebAPI
             //services.AddSingleton<IUserDal, EfUserDal>();
 
 
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = tokenOptions.Issuer,
+                        ValidAudience = tokenOptions.Audience,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                    };
+                });
+
+            services.AddDependencyResolvers(new ICoreModule[]
+                {
+                    new CoreModule()
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +75,8 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
