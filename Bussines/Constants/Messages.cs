@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Bussines.Constants
@@ -16,5 +18,19 @@ namespace Bussines.Constants
         public static string UserFirstNameInvalid = "Kullanıcı adı kısa";
 
         public static string CarImageLimitExceeded = "bir arabanın birden fazla fotoğrafı olamaz";
+
+        public static string AuthorizationDenied = "Yetkiniz Yok.";
+
+        public static string UserRegistered = "Kayıt olundu";
+
+        public static string UserNotFound = "kullanıcı bulunamadı";
+
+        public static string PasswordError = "Parola hatalı";
+        public static string SuccessfulLogin = "Giriş Başarılı";
+
+        public static string UserAlreadyExists = "Bu kullanıcı var";
+
+        public static string AccessTokenCreated = "Token oluşturuldu";
     }
+
 }

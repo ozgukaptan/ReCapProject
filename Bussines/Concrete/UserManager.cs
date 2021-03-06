@@ -8,6 +8,7 @@ using Bussines.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using FluentValidation;
+using Core.Entities.Concrete;
 
 namespace Bussines.Concrete
 {
@@ -37,6 +38,18 @@ namespace Bussines.Concrete
         {
             return new SuccessDataResult<List<User>>(_UserDal.GetList());
         }
+
+        public IDataResult<User> GetByMail(string email)
+        {
+            return new SuccessDataResult<User>(_UserDal.Get(u => u.Email == email));
+        }
+
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_UserDal.GetClaims(user));
+        }
+
+       
 
         public IDataResult<User> GetUserById(int id)
         {
