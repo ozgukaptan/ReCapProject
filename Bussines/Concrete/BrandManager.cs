@@ -41,8 +41,8 @@ namespace Bussines.Concrete
 
         public IDataResult<List<Brand>> GetAll()
         {
-            _brandDal.GetList();
-            return new SuccessDataResult<List<Brand>>();
+            
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetList());
         }
 
         public IDataResult<Brand> GetById(int id)
