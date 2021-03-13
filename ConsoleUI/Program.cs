@@ -66,20 +66,20 @@ namespace ConsoleUI
             void ShowCarList()
             {
                 var carDtos = carManager.GetAllCarDetail();
-                foreach (CarDetail carDto in carDtos.Data)
+                foreach (CarDetailDto carDto in carDtos.Data)
                 {
                     Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}"  , carDto.Brand, carDto.ModelYear.ToString(), carDto.Color, carDto.DealyPrice, carDto.Description);
                 }
             }
 
-            void ShowColorList()
-            {
-                List<Color> colors = colorManager.GetAll();
-                foreach (Color color in colors)
-                {
-                    Console.WriteLine("Renk Adı  :  {0}  Renk açıklaması : {1}  ", color.Name, color.Description.ToString() );
-                }
-            }
+            //void ShowColorList()
+            //{
+            //    List<Color> colors = colorManager.GetAll();
+            //    foreach (Color color in colors)
+            //    {
+            //        Console.WriteLine("Renk Adı  :  {0}  Renk açıklaması : {1}  ", color.Name, color.Description.ToString() );
+            //    }
+            //}
 
 
         }

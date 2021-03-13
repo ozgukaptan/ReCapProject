@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.Dtos
 {
-    public class RentalDetail : IDto
+    public class RentalDetailDto : IDto
     {
         public int Id { get; set; }
         public int CarId { get; set; }
@@ -14,7 +14,9 @@ namespace Entities.Dtos
         public string Description { get; set; }
         public string BrandName { get; set; }
         public string ColorName { get; set; }
-        public string UserName { get; set; }
+        public string FullName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public DateTime RentDate { get; set; }
         public DateTime? ReturnDate { get; set; }
     }

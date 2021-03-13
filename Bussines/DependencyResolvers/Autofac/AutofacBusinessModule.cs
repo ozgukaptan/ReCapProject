@@ -29,6 +29,18 @@ namespace Bussines.DependencyResolvers.Autofac
             builder.RegisterType<BrandManager>().As<IBrandService>();
             builder.RegisterType<EfBrandDal>().As<IBrandDal>();
 
+            builder.RegisterType<ColorManager>().As<IColorService>();
+            builder.RegisterType<EfColorDal>().As<IColorDal>();
+
+            builder.RegisterType<CarManager>().As<ICarService>();
+            builder.RegisterType<EfCarDal>().As<ICarDal>();
+
+            builder.RegisterType<RentalManager>().As<IRentalService>();
+            builder.RegisterType<EfRentalDal>().As<IRentalDal>();
+
+            builder.RegisterType<CustomerManager>().As<ICustomerService>();
+            builder.RegisterType<EfCustomerDal>().As<ICustomerDal>();
+
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 

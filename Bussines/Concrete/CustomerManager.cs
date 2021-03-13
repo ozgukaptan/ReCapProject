@@ -2,6 +2,7 @@
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -31,11 +32,17 @@ namespace Bussines.Concrete
         public IDataResult<List<Customer>> GetAll()
         {
             return new SuccessDataResult<List<Customer>>(_customerDal.GetList());
+            
         }
 
-        public IDataResult<Customer> GetCustomerById(int id)
+        public IDataResult<Customer> GetById(int id)
         {
             return new SuccessDataResult<Customer>(_customerDal.Get(c=>c.Id==id));
+        }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetail()
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>> (_customerDal.GetCustomerDetails());
         }
 
         public IDataResult<Customer> Update(Customer customer)
