@@ -68,7 +68,7 @@ namespace ConsoleUI
                 var carDtos = carManager.GetAllCarDetail();
                 foreach (CarDetailDto carDto in carDtos.Data)
                 {
-                    Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}"  , carDto.Brand, carDto.ModelYear.ToString(), carDto.Color, carDto.DealyPrice, carDto.Description);
+                    Console.WriteLine("Markası :  {0}  Model Yılı : {1}  Rengi : {2}  Fiyatı : {3}  Açıklaması : {4}"  , carDto.BrandName, carDto.ModelYear.ToString(), carDto.ColorName, carDto.DealyPrice, carDto.Description);
                 }
             }
 
