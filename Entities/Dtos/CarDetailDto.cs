@@ -1,4 +1,5 @@
 ﻿using Entities.Abstract;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,5 +15,6 @@ namespace Entities.Dtos
         public string ModelYear { get; set; }
         public decimal DealyPrice { get; set; }
         public string Description { get; set; }
+        public List<CarImage> carImages { get; set; }
     }
 }

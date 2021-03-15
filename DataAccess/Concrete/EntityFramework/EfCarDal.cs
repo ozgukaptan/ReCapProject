@@ -8,6 +8,7 @@ using Entities.Concrete;
 using Entities.Dtos;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -17,8 +18,8 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (ReCapContext context = new ReCapContext())
             {
-
-                var carDetailsList = from c in filter == null ? context.Cars : context.Cars.Where(filter)
+                
+                var carDetailsList = from c in filter == null ? context.Cars.Include(c => c.CarImages) : context.Cars.Include(c => c.CarImages).Where(filter)
                                      join b in context.Brands on c.BrandId equals b.Id
                                      join co in context.Colors on c.ColorId equals co.Id
                                      select new CarDetailDto
@@ -29,7 +30,8 @@ namespace DataAccess.Concrete.EntityFramework
                                          Color = co.Name,
                                          ModelYear = c.ModelYear,
                                          DealyPrice = c.DealyPrice,
-                                         Description = c.Description
+                                         Description = c.Description,
+                                         carImages = c.CarImages
                                      };
                 return carDetailsList.ToList();
             }

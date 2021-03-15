@@ -8,12 +8,17 @@ namespace Entities.Concrete
 {
     public class Car : IEntity
     {
+        public Car()
+        {
+            CarImages = new List<CarImage>();
+        }
         public int Id { get; set; }
         public int BrandId { get; set; }
         public int ColorId { get; set; }
         public string ModelYear { get; set; }
         public decimal DealyPrice { get; set; }
         public string Description { get; set; }
+        public List<CarImage> CarImages { get; set; }
 
     }
 }
