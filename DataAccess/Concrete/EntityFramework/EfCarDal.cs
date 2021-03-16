@@ -19,11 +19,12 @@ namespace DataAccess.Concrete.EntityFramework
             using (ReCapContext context = new ReCapContext())
             {
                 
-                var carDetailsList = from c in filter == null ? context.Cars.Include(c => c.CarImages) : context.Cars.Include(c => c.CarImages).Where(filter)
+                var carDetailsList = from c in filter == null ? context.Cars : context.Cars.Include(c => c.CarImages).Where(filter)
                                      join b in context.Brands on c.BrandId equals b.Id
                                      join co in context.Colors on c.ColorId equals co.Id
                                      select new CarDetailDto
                                      {
+                                         Id = c.Id,
                                          BrandId = b.Id,
                                          Brand = b.Name,
                                          ColorId = co.Id,
@@ -31,7 +32,7 @@ namespace DataAccess.Concrete.EntityFramework
                                          ModelYear = c.ModelYear,
                                          DealyPrice = c.DealyPrice,
                                          Description = c.Description,
-                                         carImages = c.CarImages
+                                         CarImages = c.CarImages
                                      };
                 return carDetailsList.ToList();
             }

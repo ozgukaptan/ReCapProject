@@ -31,7 +31,14 @@ namespace Bussines.Concrete
             {
                 return new ErrorDataResult<CarImage>(result.Message);
             }
-            carImage.ImagePath = FileHelpers.Add(file);
+
+            // Refactor edilecek
+            string[] path =  FileHelpers.Add(file).Split('\\');
+            string newImagePath = path[path.Length - 2].ToString();
+            newImagePath = "/"+newImagePath+"/"+ path[path.Length - 1].ToString();
+            
+
+            carImage.ImagePath = newImagePath;
             carImage.Date = DateTime.Now;
             return new SuccessDataResult<CarImage>(_carImageDal.Add(carImage));
         }

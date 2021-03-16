@@ -22,6 +22,7 @@ namespace Core.Utilities.Helpers
             }
             var result = newPath(file);
             File.Move(sourcePath, result);
+            
             return result;
         }
 
