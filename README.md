@@ -1,1 +1,1 @@
-# ReCapProject - Araç kiralam - .Net Core Web API
+# ReCapProject - Araç kiralama - .Net Core Web API
