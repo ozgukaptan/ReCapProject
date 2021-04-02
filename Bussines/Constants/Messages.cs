@@ -31,6 +31,12 @@ namespace Bussines.Constants
         public static string UserAlreadyExists = "Bu kullanıcı var";
 
         public static string AccessTokenCreated = "Token oluşturuldu";
+
+        public static string RentalCarIsRented = "Bu araç kiralamaz Teslim tarihinden daha büyük değer girdiniz";
+
+        public static string InsufficientBalance = "Bakiye Yetersiz";
+
+        public static string PaymentCompleted = "Ödeme Başarılı";
     }
 
 }

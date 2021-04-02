@@ -57,14 +57,14 @@ namespace Bussines.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
         }
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetList(c => c.BrandId == id).ToList());
+            return new SuccessDataResult<List<Car>>(_carDal.GetList(c => c.BrandId == brandId).ToList());
         }
 
-        public IDataResult<List<Car>> GetCarsByColorId(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetList(c => c.ColorId == id).ToList());
+            return new SuccessDataResult<List<Car>>(_carDal.GetList(c => c.ColorId == colorId).ToList());
         }
 
         public IDataResult<List<CarDetailDto>> GetCarsByBrandIdDetail(int id)
@@ -85,6 +85,11 @@ namespace Bussines.Concrete
         public IDataResult<CarDetailDto> GetCarsByIdDetail(int id)
         {
             return new SuccessDataResult<CarDetailDto>(_carDal.GetCarDetails(c => c.Id == id).FirstOrDefault());
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarsByBrandAndColorIdDetail(int brandId, int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.BrandId == brandId && c.ColorId == colorId).ToList());
         }
     }
 }

@@ -6,6 +6,7 @@ using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using DataAccess.Concrete.EntityFramework;
+using Core.Utilities.Results;
 
 namespace ConsoleUI
 {
@@ -15,7 +16,23 @@ namespace ConsoleUI
             
         static void Main(string[] args)
         {
+            DateTime rentDate = new DateTime(2022, 1, 1);
+            DateTime returnDate = new DateTime(2022, 1, 3);
+            Rental rental = new Rental { RentDate = rentDate, ReturnDate = returnDate, CarId = 1, CustomerId = 1, Id = 1 };
+            Payment payment = new Payment { Amount= 1200 };
 
+            
+
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            PaymentManager paymentManager = new PaymentManager(rentalManager);
+
+            IResult result = paymentManager.ReceivePayment(payment, rental);
+            Console.WriteLine(result.Success.ToString());
+            Console.ReadLine();
+
+            //IResult result = rentalManager.CheckCarRentable(rental);
+            Console.WriteLine(result.Success.ToString());
+            Console.ReadLine();
 
             Color color = new Color {Description = "sarı", Name = "a"};
             Car newCar = new Car {  BrandId = 1, ColorId = 1, DealyPrice = 100, Description = "Yeni Araba açıklama", ModelYear = "1990" };
@@ -39,7 +56,7 @@ namespace ConsoleUI
             ShowCarList();
 
             Console.WriteLine();
-            var result = carManager.Add(newCar);
+            //var result = carManager.Add(newCar);
             Console.WriteLine("---------------- Yeni Araba Eklendi ----------------");
             ShowCarList();
             Console.WriteLine();

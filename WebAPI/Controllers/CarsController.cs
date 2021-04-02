@@ -15,11 +15,14 @@ namespace WebAPI.Controllers
     {
 
         ICarService _carsService;
+        
         public CarsController(ICarService carService)
         {
             _carsService = carService;
+            
         }
 
+        
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
@@ -79,6 +82,21 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpGet("getbybrandandcolor")]
+        public IActionResult GetByBrandAndColor(int brandId,int colorId)
+        {
+            var result = _carsService.GetCarsByBrandAndColorIdDetail(brandId, colorId);
+            if(result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        
+
     }
 }
 
