@@ -21,7 +21,7 @@ namespace Bussines.Concrete
         
         public IResult Add(Brand brand)
         {
-            if (brand.Name.Length >= 2)
+            if (brand.Name.Length < 2)
             {
                 
                 return new ErrorResult(Messages.BrandNameInvalid);
@@ -53,7 +53,7 @@ namespace Bussines.Concrete
 
         public IDataResult<Brand> Update(Brand brand)
         {
-            return new SuccessDataResult<Brand>(_brandDal.Update(brand));
+            return new SuccessDataResult<Brand>(_brandDal.Update(brand),Messages.BrandUpdated);
         }
     }
 }

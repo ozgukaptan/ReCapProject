@@ -45,5 +45,7 @@ namespace Bussines.Concrete
         {
             return new SuccessDataResult<Color>(_colorDal.Update(color));
         }
+
+        
     }
 }

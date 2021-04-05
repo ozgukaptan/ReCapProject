@@ -1,6 +1,7 @@
 ﻿using Bussines.Abstract;
 using Bussines.Constants;
 using Core.Aspects.Autofac.Caching;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
@@ -20,16 +21,30 @@ namespace Bussines.Concrete
         [TransactionScopeAspect]
         public IResult ReceivePayment(Payment payment,Rental rental)
         {
-            if(payment.Amount > 10000)
+            IResult result = BusinessRules.Run(checkCreditLimit(payment));
+
+            if (result.Success) {
+                _rentalService.Add(rental);
+                return new SuccessResult(Messages.PaymentCompleted);
+            }
+            else
+            {
+                return new ErrorResult(result.Message);
+            }
+        }
+
+        // bussines roule
+
+        private IResult checkCreditLimit(Payment payment)
+        {
+            if (payment.Amount > 10000)
             {
                 return new ErrorResult(Messages.InsufficientBalance);
             }
-            else if(_rentalService.Add(rental).Success)
-            { return new SuccessResult(Messages.PaymentCompleted); }
-            else { return new ErrorResult(); }
-            
-            
-            
+            else
+            {
+                return new SuccessResult();
+            }
         }
     }
 }

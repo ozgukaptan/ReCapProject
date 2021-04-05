@@ -79,7 +79,7 @@ namespace Bussines.Concrete
 
         public IDataResult<Car>  Update(Car car)
         {
-            return new SuccessDataResult<Car>(_carDal.Update(car));
+            return new SuccessDataResult<Car>(_carDal.Update(car),Messages.CarUpdated);
         }
 
         public IDataResult<CarDetailDto> GetCarsByIdDetail(int id)

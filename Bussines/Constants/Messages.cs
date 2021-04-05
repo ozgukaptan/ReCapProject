@@ -11,6 +11,7 @@ namespace Bussines.Constants
         public static string BrandAdded = "Marka eklendi";
         public static string BrandNameInvalid = "Marka ismi İki karakterden kısa olmaz";
         public static string BrandDeleted = "Marka Silindi";
+        public static string BrandUpdated = "Marka Güncellendi";
 
         public static string CarAdded = "Araba eklendi";
         public static string RentalCarInvalid = "Bu araba kiralanamaz çünkü teslim edilmedi";
@@ -37,6 +38,9 @@ namespace Bussines.Constants
         public static string InsufficientBalance = "Bakiye Yetersiz";
 
         public static string PaymentCompleted = "Ödeme Başarılı";
-    }
+        public static string CarUpdated = "Araç Güncellendi";
 
+       
+
+    }
 }
