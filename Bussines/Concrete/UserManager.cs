@@ -53,7 +53,7 @@ namespace Bussines.Concrete
             return new SuccessDataResult<List<OperationClaim>>(_UserDal.GetClaims(user));
         }
 
-       
+        
 
         public IDataResult<User> GetUserById(int id)
         {

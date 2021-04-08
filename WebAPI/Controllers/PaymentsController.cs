@@ -15,8 +15,10 @@ namespace WebAPI.Controllers
     public class PaymentsController : ControllerBase
     {
         IPaymentService _paymentService;
-        public PaymentsController(IPaymentService paymentService)
+        ICreditCardService _creditCardService;
+        public PaymentsController(IPaymentService paymentService,ICreditCardService creditCardService)
         {
+            _creditCardService = creditCardService;
             _paymentService = paymentService;
         }
         [HttpPost("pay")]
@@ -30,5 +32,18 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpGet("getcreditcardbyuserıd")]
+        public IActionResult getCreditCardByUserId(int userId)
+        {
+            var result = _creditCardService.GetByUserId(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
     }
 }
