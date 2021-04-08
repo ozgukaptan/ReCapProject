@@ -40,7 +40,6 @@ namespace Bussines.Constants
         public static string PaymentCompleted = "Ödeme Başarılı";
         public static string CarUpdated = "Araç Güncellendi";
 
-       
-
+        public static string UserUpdate = "Kullanıcı Güncellendi";
     }
 }

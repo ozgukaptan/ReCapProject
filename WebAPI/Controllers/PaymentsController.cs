@@ -45,5 +45,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpPost("savecreditcard")]
+        public IActionResult addCreditCard(CreditCard creditCard)
+        {
+            var result = _creditCardService.Add(creditCard);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
     }
 }

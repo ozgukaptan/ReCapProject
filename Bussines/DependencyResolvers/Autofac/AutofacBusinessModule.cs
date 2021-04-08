@@ -49,6 +49,8 @@ namespace Bussines.DependencyResolvers.Autofac
 
             builder.RegisterType<PaymentManager>().As<IPaymentService>();
 
+            builder.RegisterType<FindeksManager>().As<IFindeksService>();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

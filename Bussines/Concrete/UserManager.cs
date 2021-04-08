@@ -11,6 +11,7 @@ using FluentValidation;
 using Core.Entities.Concrete;
 using Core.Aspects.Autofac.Caching;
 using Bussines.BusinessAspects.Autofac;
+using Bussines.Constants;
 
 namespace Bussines.Concrete
 {
@@ -24,7 +25,7 @@ namespace Bussines.Concrete
             _UserDal = userDal;
         }
 
-        
+
         [ValidationAspect(typeof(UserValidator))]
         public IDataResult<User> Add(User user)
         {
@@ -53,16 +54,14 @@ namespace Bussines.Concrete
             return new SuccessDataResult<List<OperationClaim>>(_UserDal.GetClaims(user));
         }
 
-        
-
         public IDataResult<User> GetUserById(int id)
         {
-            return new SuccessDataResult<User>(_UserDal.Get(u=>u.Id==id));
+            return new SuccessDataResult<User>(_UserDal.Get(u => u.Id == id));
         }
 
         public IDataResult<User> Update(User user)
         {
-            return new SuccessDataResult<User>(_UserDal.Update(user)); 
+            return new SuccessDataResult<User>(_UserDal.Update(user), Messages.UserUpdate);
         }
     }
 }
