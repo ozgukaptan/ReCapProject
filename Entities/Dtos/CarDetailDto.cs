@@ -16,6 +16,7 @@ namespace Entities.Dtos
         public string ModelYear { get; set; }
         public int DealyPrice { get; set; }
         public string Description { get; set; }
+        public int? FindeksPoint { get; set; }
         public List<CarImage> CarImages { get; set; }
     }
 }

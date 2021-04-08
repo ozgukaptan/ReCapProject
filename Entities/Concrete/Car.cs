@@ -19,6 +19,7 @@ namespace Entities.Concrete
         public int DealyPrice { get; set; }
         public string Description { get; set; }
         public List<CarImage> CarImages { get; set; }
+        public int? FindeksPoint { get; set; }
 
     }
 }

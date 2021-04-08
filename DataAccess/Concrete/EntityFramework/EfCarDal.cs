@@ -18,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (ReCapContext context = new ReCapContext())
             {
-                
+
                 var carDetailsList = from c in filter == null ? context.Cars : context.Cars.Include(c => c.CarImages).Where(filter)
                                      join b in context.Brands on c.BrandId equals b.Id
                                      join co in context.Colors on c.ColorId equals co.Id
@@ -32,7 +32,8 @@ namespace DataAccess.Concrete.EntityFramework
                                          ModelYear = c.ModelYear,
                                          DealyPrice = c.DealyPrice,
                                          Description = c.Description,
-                                         CarImages = c.CarImages
+                                         CarImages = c.CarImages,
+                                         FindeksPoint = c.FindeksPoint
                                      };
                 return carDetailsList.ToList();
             }
